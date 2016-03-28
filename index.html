@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="GBK">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<title>Phaser</title>
+    <style>
+        body { margin: 0; background-color: #fff}
+    </style>
+    <script>
+        var voucher = 0; //0兑换券没了 1兑换券有
+        var voucherNum = [
+            {//游戏成功兑换券
+                'gameWin' : 'win001'
+            },
+            {//游戏失败兑换券
+                'gameOver' : 'over001'
+            },
+            {//兑换券没有了的兑换券
+                'noVoucher' : 'noVoucher001'
+            }
+        ]
+    </script>
+    <script src="phaser.min.js"></script>
+    <script src="Boot.js"></script>
+    <script src="Preloader.js?2"></script>
+    <script src="MainMenu.js"></script>
+    <script src="Game.js"></script>
+    <script src="result.js"></script>
+</head>
+<body style="background-color: #000">
+<script>
+    (function() {
+        var game = new Phaser.Game(640, 1008, Phaser.CANVAS, 'game');
+        game.state.add('Boot', MyGame.Boot);
+        game.state.add('Preloader', MyGame.Preloader);
+        game.state.add('MainMenu', MyGame.MainMenu);
+        game.state.add('Game', MyGame.Game);
+        game.state.add('result', MyGame.result);
+        game.state.start('Boot');
+    })();
+</script>
+</body>
+</html>
